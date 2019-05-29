@@ -15,17 +15,30 @@
 		<div class="demo-v">
 			
 		</div>
+		
+		
+		<m-progress :pronum="pron"></m-progress>
   </div>
 </template>
 
 <script>
-import groupRadio from '@/components/groupRadio.vue'
+import groupRadio from '@/components/groupRadio.vue';
+import mProgress from '@/components/mProgress.vue';
+
 export default {
+	data () {
+		return {
+			pron:'10'
+		}
+	},
 	components: {
-	  groupRadio
+	  groupRadio,
+		mProgress
 	},
 	mounted() {
-		
+		setTimeout(()=>{
+			this.pron = '60';
+		},1000)
 	},
 	methods: {
 		onRadclick(rv,mt){
@@ -39,7 +52,7 @@ export default {
 	.container{
 		position:relative;
 		width: 750px;
-		background-color:#fff;
+		background-color:#eee;
 	}
 	.demo-v{
 		position:relative;
@@ -73,7 +86,7 @@ export default {
 		line-height: 60px;
 		text-align: center;
 	}
-	/* //question */
 	
-        
+	
+  
 </style>

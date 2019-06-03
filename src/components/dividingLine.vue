@@ -11,7 +11,7 @@
 		width: 670px;
 		height: 90px;
 		padding: 10px 0;
-		margin: 0 auto;
+		margin: 50px auto 0;
 		text-align: center;
 		box-sizing: border-box;
 		background-color: #fff;

@@ -7,15 +7,30 @@ export default new Router({
   mode: 'hash',  //history   hash
   base: process.env.BASE_URL,
   routes: [
+		{
+		  path: '/',
+		  name: 'index',
+		  component: () => import('@/views/Index.vue')
+		},
+		{
+		  path: '/topic',
+		  name: 'topic',
+		  component: () => import('@/views/Topic.vue')
+		},
+		{
+		  path: '/result',
+		  name: 'result',
+		  component: () => import('@/views/Result.vue')
+		},
+		{
+		  path: '/comp',
+		  name: 'Composite',
+		  component: () => import('@/views/Composite.vue')
+		},
     {
       path: '/home',
       name: 'home',
       component: () => import('@/views/Home.vue')
-    },
-		{
-		  path: '/demo',
-		  name: 'demo',
-		  component: () => import('@/views/demo.vue')
-		}
+    }
   ]
 })

@@ -28,6 +28,32 @@
 		background-color:#fff;
 		overflow:hidden;
 	}
+	.but-vl{
+		position:relative;
+		width: 560px;
+		height: 130px;
+		margin: 35px auto;
+		font-size: 30px;
+		color: #ef5a18;
+		line-height: 130px;
+		text-align: center;
+		border:2px solid #ef5a18;
+		border-radius: 65px;
+		box-sizing: border-box;
+	}
+	.but-vc{
+		position:relative;
+		width: 560px;
+		height: 130px;
+		margin: 35px auto;
+		font-size: 30px;
+		color: #fff;
+		line-height: 130px;
+		text-align: center;
+		border-radius: 65px;
+		box-sizing: border-box;
+		background-color: #ef5a18;
+	}
 	.evno{
 		pointer-events: none;
 	}

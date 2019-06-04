@@ -50,7 +50,6 @@ const mutations={
 		if(mfbool){
 			state.mResList.push({toid:mtoid,uda:data.rv});
 		}
-		console.log(JSON.stringify(state.mResList));
 	}
 }
 

@@ -54,6 +54,9 @@
 		box-sizing: border-box;
 		background-color: #ef5a18;
 	}
+	.but-vc-no{
+		background-color: #ccc;
+	}
 	.evno{
 		pointer-events: none;
 	}

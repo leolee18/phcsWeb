@@ -5,7 +5,7 @@
 			<div class="que-one-tit">{{slide.bt}}</div>
 			<group-radio :mtyp="'name'+slide.toid" :radclick="onRadclick"></group-radio>
 		</div>
-		<div @click="mtopic" class="but-vc acto">结果</div>
+		<div @click="mtopic" class="but-vc acto" :class="{'but-vc-no':pron < 99}">结果</div>
 	</div>
 	<m-progress :pronum="pron"></m-progress>
   </div>
@@ -18,7 +18,7 @@ import mProgress from '@/components/mProgress.vue';
 export default {
 	data () {
 		return {
-			pron:'10'
+			pron:'0'
 		}
 	},
 	components: {
@@ -27,8 +27,17 @@ export default {
 	},
 	computed:{
 		...mapGetters([
-			'mTopList'
+			'mTopList',
+			'mResList'
 		])
+	},
+	watch: {
+	  mTopList: function (val){
+		this.updatePron();
+	  },
+	  mResList: function (val){
+		this.updatePron();
+	  }
 	},
 	mounted() {
 		this.$store.dispatch('topResInit');
@@ -36,11 +45,17 @@ export default {
 	},
 	methods: {
 		mtopic(e){
-			this.$router.push({path:'/result'});
+			if(this.pron >= 100){
+				this.$router.push({path:'/result'});
+			}
 		},
 		onRadclick(rv,mt){
-			//console.log(rv+'___'+mt)
 			this.$store.dispatch('setTopRes',{rv,mt});
+		},
+		updatePron(){
+			if(this.mTopList && this.mResList && this.mTopList.length > 0 && this.mResList.length > 0){
+				this.pron = Math.floor(this.mResList.length/this.mTopList.length*100)+'';
+			}
 		}
 	}
 	

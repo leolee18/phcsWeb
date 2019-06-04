@@ -7,13 +7,9 @@ function serAdd(addres){
 	var kc = 'interface/';
 	var returnStr = serUrl;
 	switch (addres){
-		case 'all.php'://页面数据集
-		case 'wxLogin.php'://登录
+		case 'topic.php'://页面题目数据集
 			returnStr = serInter+kc+addres;
 			break;
-		case 'sample.php'://分享参数
-			returnStr = 'http://51coach.com/msdweb/server/'+addres;
-			break;	
 		case 'local':
 			returnStr = serUrl;
 			break;	

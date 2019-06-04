@@ -1,17 +1,9 @@
 <template>
   <div class="container">
 	<div class="que-list">
-		<div class="que-all">
-			<div class="que-one-tit">购买自己喜欢的东西这件事上从不迟疑。</div>
-			<group-radio mtyp='name1' :radclick="onRadclick"></group-radio>
-		</div>
-		<div class="que-all">
-			<div class="que-one-tit">购买自己喜欢的东西这件事上从不迟疑。</div>
-			<group-radio mtyp='name2' :radclick="onRadclick"></group-radio>
-		</div>
-		<div class="que-all">
-			<div class="que-one-tit">购买自己喜欢的东西这件事上从不迟疑。</div>
-			<group-radio mtyp='name3' :radclick="onRadclick"></group-radio>
+		<div v-for="(slide, index) in mTopList" :key="index" class="que-all">
+			<div class="que-one-tit">{{slide.bt}}</div>
+			<group-radio :mtyp="'name'+slide.toid" :radclick="onRadclick"></group-radio>
 		</div>
 		<div @click="mtopic" class="but-vc acto">结果</div>
 	</div>
@@ -20,7 +12,7 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex';
 import groupRadio from '@/components/groupRadio.vue';
 import mProgress from '@/components/mProgress.vue';
 export default {
@@ -33,14 +25,22 @@ export default {
 	  groupRadio,
 	  mProgress
 	},
+	computed:{
+		...mapGetters([
+			'mTopList'
+		])
+	},
 	mounted() {
+		this.$store.dispatch('topResInit');
+		this.$store.dispatch('topLoad');
 	},
 	methods: {
 		mtopic(e){
 			this.$router.push({path:'/result'});
 		},
 		onRadclick(rv,mt){
-			console.log(rv+'___'+mt)
+			//console.log(rv+'___'+mt)
+			this.$store.dispatch('setTopRes',{rv,mt});
 		}
 	}
 	

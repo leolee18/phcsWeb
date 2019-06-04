@@ -2,7 +2,7 @@
   <div class="gro-ra-all">
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
-  			<input @click="getRadioVal" :id="mtyp+'1'" type="radio" :name="mtyp" value="1" checked>
+  			<input @click="getRadioVal" :id="mtyp+'1'" type="radio" :name="mtyp" value="1">
   			<label class="lab" :for="mtyp+'1'"></label>
   		</div>
   		<span class="sp1">同意</span>

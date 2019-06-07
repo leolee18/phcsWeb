@@ -2,9 +2,11 @@
   <div class="container">
 	<dividing-line>你的测试结果为</dividing-line>
 	<img src="@/assets/demo_1.jpg" class="res-img-xz" />
-	<img src="@/assets/demo_2.jpg" class="res-img-xz" />
+	<div class="chart-v">
+	    <canvas ref="myChart2" width="500px" height="500px"></canvas>
+	</div>
 	<result-text v-for="(slide, index) in mResObj && mResObj.daMS" :key="index" >{{slide}}</result-text>
-	<dividing-line>推荐书单</dividing-line>
+	<dividing-line v-if="mBooks.length > 0">推荐书单</dividing-line>
 	<recommended-book v-for="(slides, indexs) in mBooks" :key="indexs">
 		<img slot="reci" :src="'http://v.51coach.com/wwlyweb/'+slides.img" class="rec-all-i" />
 		<div slot="rect">《{{slides.title}}》</div>
@@ -21,10 +23,13 @@ import {mapGetters} from 'vuex';
 import dividingLine from '@/components/dividingLine.vue';
 import resultText from '@/components/resultText.vue';
 import recommendedBook from '@/components/recommendedBook.vue';
+import Chart from 'chart.js';
 export default {
 	data () {
 		return {
-			mBooks:[]
+			mBooks:[],
+			ctx:null,
+			mChArr:[0, 0, 0, 0, 0, 0,0, 0]
 		}
 	},
 	components: {
@@ -42,11 +47,18 @@ export default {
 		if(val && val.daImg){
 			this.mBooks = this.getRandomArrayElements(val.daImg, 3);
 		}
+		this.mChArr = this.setChart(val.daan);
+		this.updateChart(this.ctx,this.mChArr);
 	  }
 	},
 	mounted() {
 		if(this.mResObj && this.mResObj.daImg){
 			this.mBooks = this.getRandomArrayElements(this.mResObj.daImg, 3);
+		}
+		this.ctx = this.$refs.myChart2.getContext('2d');
+		if(this.mResObj && this.mResObj.daan){
+			this.mChArr = this.setChart(this.mResObj.daan);
+			this.updateChart(this.ctx,this.mChArr);
 		}
 	},
 	methods: {
@@ -68,6 +80,94 @@ export default {
 			    shuffled[i] = temp;
 			}
 			return shuffled.slice(min);
+		},
+		setChart(mDaan){
+			let mArr = this.mChArr;
+			if(mDaan.jt){
+				mArr[0] = mDaan.jt;
+			}
+			if(mDaan.jk){
+				mArr[1] = mDaan.jk;
+			}
+			if(mDaan.sy){
+				mArr[2] = mDaan.sy;
+			}
+			if(mDaan.cf){
+				mArr[3] = mDaan.cf;
+			}
+			if(mDaan.ah){
+				mArr[4] = mDaan.ah;
+			}
+			if(mDaan.sj){
+				mArr[5] = mDaan.sj;
+			}
+			if(mDaan.xx){
+				mArr[6] = mDaan.xx;
+			}
+			if(mDaan.wh){
+				mArr[7] = mDaan.wh;
+			}
+			return mArr;
+		},
+		updateChart(ctx,mData){
+			let myRadarChart = new Chart(ctx, {
+			    "type": "radar",
+			    "data": {
+			        "labels": [
+			            "家庭", 
+			            "健康", 
+			            "事业", 
+			            "财富",
+			            "爱好",
+			            "社交",
+						"学习",
+						"文化"
+			        ],
+					color: '#fff',
+			        "datasets": [{
+			            "label": "",
+			            "data": mData,
+			            "fill": true,
+			            "backgroundColor": "rgba(8, 35, 55, 0.1)",
+			            "borderColor": "rgb(8, 35, 55)",
+			            "pointBackgroundColor": "rgb(239, 90, 24)",
+			            "pointBorderColor": "#fff",
+			            "pointHoverBackgroundColor": "#fff",
+			            "pointHoverBorderColor": "rgb(239, 90, 24)",
+			            "lineTension": 0.1
+			        }]
+			    },
+			    options: {
+					fontColor:'#fff',
+					legend: {
+						display: false,
+						position: 'left',
+					},
+			        scale: {
+			            ticks: {
+							display: false,
+			                suggestedMin: 0,
+			                suggestedMax: 100,
+			                stepSize: 20
+			            },
+						gridLines: {
+							color: '#dfdfdf',
+							fontColor: "#000",
+						},
+						angleLines:{
+							display:true,//雷达辐射轴     
+							color: '#dfdfdf',
+						},
+						pointLabels:{
+							fontColor:"#565f70",
+							fontSize:20//x轴文字
+						},
+					},
+					tooltips: {
+						enabled:false
+					}
+			    }
+			});
 		}
 	}
 	
@@ -78,6 +178,12 @@ export default {
 		position:relative;
 		width: 750px;
 		color: #565f70;
+	}
+	.chart-v{
+		position: relative;
+		width: 500px;
+		height: 500px;
+		margin: 0 auto;
 	}
 	.res-img-xz{
 		position: relative;

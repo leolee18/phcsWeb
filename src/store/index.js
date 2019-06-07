@@ -8,7 +8,7 @@ const getters={}
 const actions={}
 const mutations={}
 
-import logindemo from './modules/logindemo'
+import topicDaan from './modules/topicDaan'
 import topicList from './modules/topicList'
 
 export default new Vuex.Store({
@@ -17,7 +17,7 @@ export default new Vuex.Store({
   mutations,
   actions,
 	modules:{
-		logindemo,
+		topicDaan,
 		topicList
 	}
 })

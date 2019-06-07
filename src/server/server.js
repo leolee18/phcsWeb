@@ -8,6 +8,7 @@ function serAdd(addres){
 	var returnStr = serUrl;
 	switch (addres){
 		case 'topic.php'://页面题目数据集
+		case 'topda.php'://结果提交
 			returnStr = serInter+kc+addres;
 			break;
 		case 'local':

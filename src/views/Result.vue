@@ -3,20 +3,13 @@
 	<dividing-line>你的测试结果为</dividing-line>
 	<img src="@/assets/demo_1.jpg" class="res-img-xz" />
 	<img src="@/assets/demo_2.jpg" class="res-img-xz" />
-	<result-text>你在工作中不仅获得了满满成就感，也在这个过程中收获了很多财富，这个过程对你来说是一种享受。</result-text>
-	<result-text>在每个工作日的早晨你总是难以起床，想到工作会感到头疼。或许这是因为没有找到对的路和正确的方法。</result-text>
+	<result-text v-for="(slide, index) in mResObj && mResObj.daMS" :key="index" >{{slide}}</result-text>
 	<dividing-line>推荐书单</dividing-line>
-	<recommended-book>
-		<img slot="reci" src="@/assets/demo_3.png" class="rec-all-i" />
-		<div slot="rect">《枯夺夺夺士大夫》</div>
-		<div slot="recc">厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化</div>
-		<div slot="recb">10节</div>
-	</recommended-book>
-	<recommended-book>
-		<img slot="reci" src="@/assets/demo_3.png" class="rec-all-i" />
-		<div slot="rect">《枯夺夺夺士大夫》</div>
-		<div slot="recc">厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化厅在夺地一规范化</div>
-		<div slot="recb">10节</div>
+	<recommended-book v-for="(slides, indexs) in mBooks" :key="indexs">
+		<img slot="reci" :src="'http://v.51coach.com/wwlyweb/'+slides.img" class="rec-all-i" />
+		<div slot="rect">《{{slides.title}}》</div>
+		<div slot="recc">{{slides.cont}}</div>
+		<div slot="recb"></div>
 	</recommended-book>
 	<div @click="mreading" class="but-vl acto">开始读书</div>
 	<div @click="minvite" class="but-vc acto">邀请好友</div>
@@ -24,12 +17,14 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import dividingLine from '@/components/dividingLine.vue';
 import resultText from '@/components/resultText.vue';
 import recommendedBook from '@/components/recommendedBook.vue';
 export default {
 	data () {
 		return {
+			mBooks:[]
 		}
 	},
 	components: {
@@ -37,9 +32,22 @@ export default {
 	  resultText,
 	  recommendedBook
 	},
+	computed:{
+		...mapGetters([
+			'mResObj'
+		])
+	},
+	watch: {
+	  mResObj: function (val){
+		if(val && val.daImg){
+			this.mBooks = this.getRandomArrayElements(val.daImg, 3);
+		}
+	  }
+	},
 	mounted() {
-		var items = ['1','2','4','5','6','7','8','9','10'];
-		console.log(this.getRandomArrayElements(items, 12) );
+		if(this.mResObj && this.mResObj.daImg){
+			this.mBooks = this.getRandomArrayElements(this.mResObj.daImg, 3);
+		}
 	},
 	methods: {
 		minvite(e){

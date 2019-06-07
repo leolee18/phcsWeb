@@ -48,6 +48,8 @@ export default {
 			if(this.pron >= 100){
 				this.$router.push({path:'/result'});
 			}
+			this.$router.push({path:'/result'});
+			this.$store.dispatch('resLoad',{uoid:'b86dff93ab0a22449c08a9d289ae136b',daan:JSON.stringify(this.mResList)});
 		},
 		onRadclick(rv,mt){
 			this.$store.dispatch('setTopRes',{rv,mt});

@@ -32,10 +32,10 @@ export default {
 	watch: {
 	  mResObj: function (val){
 		if(val && val.tjImg){
-			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+val.tjImg;
+			this.mtsimg = 'http://51coach.com/wwlyweb/'+val.tjImg;
 		}
 		if(val && val.user){
-			this.musimg = val.user.headimgurl;
+			this.musimg = 'http://51coach.com/wwlyweb/interface/'+val.user.headimgurl;
 		}
 		if(this.mResObj && this.mResObj.daMS){
 			this.mdaMS = this.mResObj.daMS;
@@ -59,10 +59,10 @@ export default {
 		that.ctx.fillText("扫描二维码，测测你的平衡等级吧",50,1150);
 		
 		if(this.mResObj && this.mResObj.tjImg){
-			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+this.mResObj.tjImg;
+			this.mtsimg = 'http://51coach.com/wwlyweb/'+this.mResObj.tjImg;
 		}
 		if(this.mResObj && this.mResObj.user){
-			this.musimg = this.mResObj.user.headimgurl;
+			this.musimg = 'http://51coach.com/wwlyweb/interface/'+this.mResObj.user.headimgurl;
 		}
 		if(this.mResObj && this.mResObj.daMS){
 			this.mdaMS = this.mResObj.daMS;
@@ -72,6 +72,15 @@ export default {
 	},
 	methods: {
 		ULoaded(e){
+			let circle = {
+				x: 50+30,
+				y: 50+50,
+				r: 50
+			}
+			this.ctx.save();
+			this.ctx.beginPath();
+			this.ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, false);
+			this.ctx.clip();
 			this.ctx.drawImage(this.mUimg,30,50,100,100);
 			this.updateImg();
 		},
@@ -124,7 +133,7 @@ export default {
 		},
 		updateImg(){
 			let myImg = this.$refs.myImg;
-			//myImg.src = this.$refs.myChartI.toDataURL('image/png');
+			myImg.src = this.$refs.myChartI.toDataURL('image/png');
 		}
 	}
 }

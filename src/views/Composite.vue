@@ -82,6 +82,7 @@ export default {
 			this.ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, false);
 			this.ctx.clip();
 			this.ctx.drawImage(this.mUimg,30,50,100,100);
+			this.ctx.restore();
 			this.updateImg();
 		},
 		TLoaded(e){

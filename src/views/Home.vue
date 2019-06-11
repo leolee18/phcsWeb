@@ -115,7 +115,7 @@ export default {
 	
 }
 </script>
-<style>
+<style scoped>
 .small {
     width: 500px;
     height: 500px;

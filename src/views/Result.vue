@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 	<dividing-line>你的测试结果为</dividing-line>
-	<img src="@/assets/demo_1.jpg" class="res-img-xz" />
+	<img :src="mtsimg" class="res-img-xz" />
 	<div class="chart-v">
 	    <canvas ref="myChart2" width="500px" height="500px"></canvas>
 	</div>
@@ -29,7 +29,8 @@ export default {
 		return {
 			mBooks:[],
 			ctx:null,
-			mChArr:[0, 0, 0, 0, 0, 0,0, 0]
+			mChArr:[0, 0, 0, 0, 0, 0,0, 0],
+			mtsimg:''
 		}
 	},
 	components: {
@@ -47,6 +48,9 @@ export default {
 		if(val && val.daImg){
 			this.mBooks = this.getRandomArrayElements(val.daImg, 3);
 		}
+		if(val && val.tjImg){
+			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+val.tjImg;
+		}
 		this.mChArr = this.setChart(val.daan);
 		this.updateChart(this.ctx,this.mChArr);
 	  }
@@ -54,6 +58,9 @@ export default {
 	mounted() {
 		if(this.mResObj && this.mResObj.daImg){
 			this.mBooks = this.getRandomArrayElements(this.mResObj.daImg, 3);
+		}
+		if(this.mResObj && this.mResObj.tjImg){
+			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+this.mResObj.tjImg;
 		}
 		this.ctx = this.$refs.myChart2.getContext('2d');
 		if(this.mResObj && this.mResObj.daan){
@@ -63,6 +70,7 @@ export default {
 	},
 	methods: {
 		minvite(e){
+			this.$store.dispatch('resImgd',this.$refs.myChart2.toDataURL('image/png'));
 			this.$router.push({path:'/comp'});
 		},
 		mreading(e){
@@ -173,7 +181,7 @@ export default {
 	
 }
 </script>
-<style>
+<style scoped>
 	.container{
 		position:relative;
 		width: 750px;

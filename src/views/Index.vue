@@ -29,7 +29,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 	.container{
 		position:relative;
 		width: 750px;

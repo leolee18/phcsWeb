@@ -147,9 +147,11 @@ export default {
 		background-color: #f5f5f5;
 	}
 	.com-can{
-		position: relative;
+		position: absolute;
 		width: 750px;
 		height: 1230px;
+		top:0;
+		left: 750px;
 	}
 	.com-can-img{
 		position: absolute;

@@ -22,6 +22,13 @@
 <script>
 
 export default {
+	mounted() {
+		let self = this;
+		let mId = self.$route.params.id;
+		if(mId && mId != ''){
+			self.$store.dispatch('setUoid',mId);
+		}
+	},
 	methods: {
 		mstart(e){
 			this.$router.push({path:'/topic'});

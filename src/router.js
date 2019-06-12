@@ -8,7 +8,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
 		{
-		  path: '/index',
+		  path: '/index/:id',
 		  name: 'index',
 		  component: () => import('@/views/Index.vue')
 		},

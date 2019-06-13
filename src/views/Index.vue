@@ -31,6 +31,7 @@ export default {
 	},
 	methods: {
 		mstart(e){
+			//this.$toast.success('您还没有奖金您还没有奖金您还没有奖金您还没有奖金您还没有奖金');
 			this.$router.push({path:'/topic'});
 		}
 	}

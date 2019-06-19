@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-	<div class="com-ts">长按下方图片，『保存图片』或『者发送给朋友』</div>
+	<div class="com-ts">长按下方图片，『保存图片』或『发送给朋友』</div>
 	<img ref="myImg" src="" class="com-bc-img"/>
 	<div class="com-can">
 		<canvas ref="myChartI" width="750px" height="1230px"></canvas>
@@ -107,7 +107,11 @@ export default {
 			that.ctx.fillStyle="#000000";
 			that.ctx.font="30px Arial";
 			if(this.mResObj && this.mResObj.user){
-				that.ctx.fillText(this.mResObj.user.nickname,150,110);
+				let mNameS = '匿名';
+				if(this.mResObj.user.nickname && this.mResObj.user.nickname != ''){
+					mNameS = this.mResObj.user.nickname;
+				}
+				that.ctx.fillText(mNameS,150,110);
 			}
 			that.ctx.font="26px Arial";
 			that.ctx.fillStyle="#9ca1ac";

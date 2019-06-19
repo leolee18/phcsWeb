@@ -5,28 +5,28 @@
   			<input @click="getRadioVal" :id="mtyp+'1'" type="radio" :name="mtyp" value="1">
   			<label class="lab" :for="mtyp+'1'"></label>
   		</div>
-  		<span class="sp1">同意</span>
+  		<span class="sp1">符合</span>
   	</div>
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
   			<input @click="getRadioVal" :id="mtyp+'2'" type="radio" :name="mtyp" value="2">
   			<label class="lab" :for="mtyp+'2'"></label>
   		</div>
-  		<span class="sp1">部分同意</span>
+  		<span class="sp1">比较符合</span>
   	</div>
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
   			<input @click="getRadioVal" :id="mtyp+'3'" type="radio" :name="mtyp" value="3">
   			<label :for="mtyp+'3'"></label>
   		</div>
-  		<span>部分反对</span>
+  		<span>不太符合</span>
   	</div>
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
   			<input @click="getRadioVal" :id="mtyp+'4'" type="radio" :name="mtyp" value="4">
   			<label :for="mtyp+'4'"></label>
   		</div>
-  		<span>反对</span>
+  		<span>不符合</span>
   	</div>
   </div>
 </template>

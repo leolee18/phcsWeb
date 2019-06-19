@@ -2,7 +2,7 @@
   <div class="container">
 	<div class="ind-all">
 		<img src="@/assets/cp_ct.png" class="ind-ct-img" />
-		<div class="ind-text">本测试是通过自己工作、生活中的一些情况，觉察到平时忽略的部分，找出希望有所改变或强化的内容，然后通过相应的书籍学习以及练习。</div>
+		<div class="ind-text">本测试是通过自己工作、生活中的一些情况，觉察到平时忽略的部分，找出希望有所改变或强化的内容，然后通过相应的书籍学习以及提升。</div>
 		<div class="ind-text">测试共24道题，为了保证测试效果，请遵守以下规则：</div>
 		<div class="ind-xz">
 			<div class="ind-xz-one">
@@ -11,7 +11,7 @@
 			</div>
 			<div class="ind-xz-one">
 				<img src="@/assets/ind_cs.png" class="ind-xz-one-img"/>				
-				<div class="ind-xz-one-text">诚实回答（即时你不喜欢这个答案）</div>
+				<div class="ind-xz-one-text">诚实回答（即使你不喜欢这个答案）</div>
 			</div>
 		</div>
 		<div @click="mstart" class="but-vc acto">开始测试</div>

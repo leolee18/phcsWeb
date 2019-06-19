@@ -43,6 +43,7 @@ export default {
 	mounted() {
 		this.$store.dispatch('topResInit');
 		this.$store.dispatch('topLoad');
+		this.custScrollBy(0);
 	},
 	methods: {
 		mtopic(e){
@@ -60,11 +61,29 @@ export default {
 		},
 		onRadclick(rv,mt){
 			this.$store.dispatch('setTopRes',{rv,mt});
+			if(mt !== 'name1'){
+				this.custScrollBy(430);
+			}
 		},
 		updatePron(){
 			if(this.mTopList && this.mResList && this.mTopList.length > 0 && this.mResList.length > 0){
 				this.pron = Math.floor(this.mResList.length/this.mTopList.length*100)+'';
 			}
+		},
+		custScrollBy(distance) {
+				var initialY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+				var finalY = initialY + distance;
+				var baseY = (initialY + finalY) * 0.5;
+				var coordDiff = initialY - baseY;
+				var startTime = performance.now();
+
+				function scroll() {
+						var calcTime = (performance.now() - startTime) / Math.abs(distance * 0.7);
+						if (calcTime > 1) calcTime = 1;
+						window.scrollTo(0, baseY + coordDiff * Math.cos(calcTime * Math.PI));
+						if (calcTime < 1) window.requestAnimationFrame(scroll);
+				}
+				window.requestAnimationFrame(scroll);
 		}
 	}
 	

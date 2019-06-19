@@ -106,13 +106,12 @@ export default {
 			
 			that.ctx.fillStyle="#000000";
 			that.ctx.font="30px Arial";
-			if(this.mResObj && this.mResObj.user){
-				let mNameS = '匿名';
-				if(this.mResObj.user.nickname && this.mResObj.user.nickname != ''){
-					mNameS = this.mResObj.user.nickname;
-				}
-				that.ctx.fillText(mNameS,150,110);
+			let mNameS = '匿名';
+			if(this.mResObj && this.mResObj.user && this.mResObj.user.nickname && this.mResObj.user.nickname != ''){
+				mNameS = this.mResObj.user.nickname;
 			}
+			that.ctx.fillText(mNameS,150,110);
+			
 			that.ctx.font="26px Arial";
 			that.ctx.fillStyle="#9ca1ac";
 			if(that.mdaMS.length >0){

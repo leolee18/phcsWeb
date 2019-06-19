@@ -13,8 +13,8 @@
 		<div slot="recc">{{slides.cont}}</div>
 		<div slot="recb"></div>
 	</recommended-book>
-	<div @click="mreading" class="but-vl acto">开始读书</div>
-	<div @click="minvite" class="but-vc acto">邀请好友</div>
+	<div @click="mreading" class="but-vl acto">前往读书</div>
+	<div @click="minvite" class="but-vc acto">邀请好友参与测试</div>
   </div>
 </template>
 

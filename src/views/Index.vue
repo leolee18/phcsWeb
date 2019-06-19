@@ -14,7 +14,7 @@
 				<div class="ind-xz-one-text">诚实回答（即时你不喜欢这个答案）</div>
 			</div>
 		</div>
-		<div @click="mstart" class="but-vc acto">开始</div>
+		<div @click="mstart" class="but-vc acto">开始测试</div>
 	</div>
   </div>
 </template>

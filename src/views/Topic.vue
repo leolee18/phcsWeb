@@ -5,7 +5,7 @@
 			<div class="que-one-tit">{{slide.bt}}</div>
 			<group-radio :mtyp="'name'+slide.toid" :radclick="onRadclick"></group-radio>
 		</div>
-		<div @click="mtopic" class="but-vc acto" :class="{'but-vc-no':pron < 99}">结果</div>
+		<div @click="mtopic" class="but-vc acto" :class="{'but-vc-no':pron < 99}">获取测试结果</div>
 	</div>
 	<m-progress :pronum="pron"></m-progress>
   </div>

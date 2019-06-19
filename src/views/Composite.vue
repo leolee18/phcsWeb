@@ -145,8 +145,9 @@ export default {
 </script>
 <style scoped>
 	.container{
-		position:relative;
+		position:absolute;
 		width: 750px;
+		min-height: 100%;
 		color: #565f70;
 		background-color: #f5f5f5;
 	}

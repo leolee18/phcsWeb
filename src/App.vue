@@ -3,7 +3,18 @@
     <router-view />
   </div>
 </template>
-
+<script>
+import storage from '@/server/storage.js';
+export default {
+	mounted() {
+		let self = this;
+		let mId = storage.get('phcstoken');
+		if(mId && mId != ''){
+			self.$store.dispatch('setUoid',mId);
+		}
+	}
+}
+</script>
 <style>
 	body{
 		position:absolute;

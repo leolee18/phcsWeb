@@ -69,6 +69,10 @@ export default {
 			this.canText();
 		}
 		this.updateImg();
+		
+		if(!this.mResObj){
+			this.$store.dispatch('resCache');
+		}
 	},
 	methods: {
 		ULoaded(e){

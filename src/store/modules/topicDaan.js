@@ -1,5 +1,6 @@
 import types from '../types.js'
 import ser from '../../server/server';
+import storage from '../../server/storage.js';
 
 const state={
 	mUoid:'',
@@ -25,8 +26,15 @@ const actions={
 			console.log(JSON.stringify(msg.cont))
 			if(msg.status == 'success'){
 				commit(types.RES_PAGE_OBJ,msg.cont);
+				storage.set(param.uoid,JSON.stringify(msg.cont));
 			}
 		})
+	},
+	resCache({commit,state}){
+		let mRes = storage.get(state.mUoid);
+		if(mRes && mRes != ''){
+			commit(types.RES_PAGE_OBJ,JSON.parse(mRes));
+		}
 	},
 	resImgd({commit,state}, param){
 		commit(types.RES_IMG_BATE,param);

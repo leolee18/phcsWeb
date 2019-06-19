@@ -20,19 +20,39 @@
 </template>
 
 <script>
-
+import storage from '@/server/storage.js';
 export default {
 	mounted() {
 		let self = this;
 		let mId = self.$route.params.id;
 		if(mId && mId != ''){
+			storage.set('phcstoken',mId);
 			self.$store.dispatch('setUoid',mId);
+		}else{
+			let mStr32 = storage.get('phcstoken');
+			if(mStr32 && mStr32 != ''){
+				self.$store.dispatch('setUoid',mStr32);
+			}else{
+				mStr32 = self.randomString();
+				storage.set('phcstoken',mStr32);
+				self.$store.dispatch('setUoid',mStr32);
+			}
 		}
 	},
 	methods: {
 		mstart(e){
 			//this.$toast.success('您还没有奖金您还没有奖金您还没有奖金您还没有奖金您还没有奖金');
 			this.$router.push({path:'/topic'});
+		},
+		randomString(len) {
+		　　len = len || 32;
+		　　let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+		　　let maxPos = $chars.length;
+		　　let pwd = '';
+		　　for (let i = 0; i < len; i++) {
+		　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+		　　}
+		　　return pwd;
 		}
 	}
 }

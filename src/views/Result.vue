@@ -67,6 +67,9 @@ export default {
 			this.mChArr = this.setChart(this.mResObj.daan);
 			this.updateChart(this.ctx,this.mChArr);
 		}
+		if(!this.mResObj){
+			this.$store.dispatch('resCache');
+		}
 	},
 	methods: {
 		minvite(e){
@@ -74,7 +77,7 @@ export default {
 			this.$router.push({path:'/comp'});
 		},
 		mreading(e){
-			console.log('aaaa')
+			window.location.href = 'http://51coach.com/msdWeb/#/monox/9D41CF64-B93F-6302-B40C-3EBDE0DBAE7A';
 		},
 		getRandomArrayElements(arr, count){
 			let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;

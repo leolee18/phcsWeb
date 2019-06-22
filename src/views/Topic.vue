@@ -1,9 +1,11 @@
 <template>
   <div class="container">
 	<div class="que-list">
-		<div v-for="(slide, index) in mTopList" :key="index" class="que-all">
-			<div class="que-one-tit">{{slide.bt}}</div>
-			<group-radio :mtyp="'name'+slide.toid" :radclick="onRadclick"></group-radio>
+		<div class="que-list-all">
+			<div v-for="(slide, index) in mTopList" :key="index" class="que-all">
+				<div class="que-one-tit">{{slide.bt}}</div>
+				<group-radio :mtyp="'name'+slide.toid" :radclick="onRadclick"></group-radio>
+			</div>
 		</div>
 		<div @click="mtopic" class="but-vc acto" :class="{'but-vc-no':pron < 99}">获取测试结果</div>
 	</div>
@@ -109,6 +111,9 @@ export default {
 		border-bottom: 3px solid #eee;
 		box-sizing: border-box;
 		background-color: #fff;
+	}
+	.que-list-all .que-all:last-child{
+		border-bottom:none;
 	}
 	.que-one-tit{
 		position:relative;

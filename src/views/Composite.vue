@@ -54,9 +54,9 @@ export default {
 		that.ctx.fillRect(0,0,750,1230);
 		that.ctx.font="30px Arial";
 		that.ctx.fillStyle="#8b9eab";
-		that.ctx.fillText("你的测试结果",500,110);
+		that.ctx.fillText("我的测试结果",500,110);
 		that.ctx.font="28px Arial";
-		that.ctx.fillText("扫描二维码，测测你的平衡等级吧",50,1150);
+		that.ctx.fillText("扫描二维码，测测你的平衡状态",50,1150);
 		
 		if(this.mResObj && this.mResObj.tjImg){
 			this.mtsimg = 'http://51coach.com/wwlyweb/'+this.mResObj.tjImg;

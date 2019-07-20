@@ -1,5 +1,5 @@
-<template functional>
-	<div class="rec-all">
+<template >
+	<div @click="clickBook" class="rec-all">
 		<div class="rec-all-iv">
 			<slot name='reci'></slot>
 		</div>
@@ -16,6 +16,16 @@
 		</div>
 	</div>
 </template>
+
+<script>
+	export default {
+		methods: {
+			clickBook(e){
+				console.log('book link')
+			}
+		}
+	}
+</script>
 
 <style scoped>
 	.rec-all {

@@ -1,7 +1,7 @@
 <template>
   <div class="pro-fixed">
   	<div class="pro-all">
-  		<div class="pro-all-t">{{pronum}}%</div>
+  		<div class="pro-all-t">{{Math.ceil((pronum/100)*24)}}/24</div>
   		<div class="pro-all-l">
   			<div class="pro-all-ll"></div>
   			<div class="pro-all-lr" :style="{width:pronum+'%'}"></div>

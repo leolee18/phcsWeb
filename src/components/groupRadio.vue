@@ -71,6 +71,7 @@
 		margin: 0 auto;
 		width: 66px;
 		height: 66px;
+		-webkit-tap-highlight-color: transparent;
 	}
 	span{
 		position: absolute;

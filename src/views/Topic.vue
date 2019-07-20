@@ -3,7 +3,7 @@
 	<div class="que-list">
 		<div class="que-list-all">
 			<div v-for="(slide, index) in mTopList" :key="index" class="que-all">
-				<div class="que-one-tit">{{slide.bt}}</div>
+				<div class="que-one-tit">{{index+1}}, {{slide.bt}}</div>
 				<group-radio :mtyp="'name'+slide.toid" :radclick="onRadclick"></group-radio>
 			</div>
 		</div>

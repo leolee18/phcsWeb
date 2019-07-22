@@ -21,7 +21,7 @@
 	export default {
 		methods: {
 			clickBook(e){
-				console.log('book link')
+				window.location.href = 'https://appgbvcnsc67552.h5.xiaoeknow.com/homepage';
 			}
 		}
 	}

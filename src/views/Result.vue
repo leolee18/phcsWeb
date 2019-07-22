@@ -77,7 +77,8 @@ export default {
 			this.$router.push({path:'/comp'});
 		},
 		mreading(e){
-			window.location.href = 'http://51coach.com/msdWeb/#/monox/9D41CF64-B93F-6302-B40C-3EBDE0DBAE7A';
+			window.location.href = 'https://appgbvcnsc67552.h5.xiaoeknow.com/homepage';
+			//window.location.href = 'http://51coach.com/msdWeb/#/monox/9D41CF64-B93F-6302-B40C-3EBDE0DBAE7A';
 		},
 		getRandomArrayElements(arr, count){
 			let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;

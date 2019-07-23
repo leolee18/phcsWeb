@@ -3,16 +3,16 @@
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
   			<input @click="getRadioVal" :id="mtyp+'1'" type="radio" :name="mtyp" value="1">
-  			<label class="lab" :for="mtyp+'1'"></label>
+  			<label :for="mtyp+'1'"></label>
   		</div>
-  		<span class="sp1">符合</span>
+  		<span>符合</span>
   	</div>
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
   			<input @click="getRadioVal" :id="mtyp+'2'" type="radio" :name="mtyp" value="2">
-  			<label class="lab" :for="mtyp+'2'"></label>
+  			<label :for="mtyp+'2'"></label>
   		</div>
-  		<span class="sp1">比较符合</span>
+  		<span>比较符合</span>
   	</div>
   	<div class="gro-ra-one">
   		<div class="gro-ra-one-ra">
@@ -65,6 +65,7 @@
 	.gro-ra-one{
 		position:relative;
 		width: 25%;
+		color: #082337;
 	}
 	.gro-ra-one-ra{
 		position: relative;
@@ -80,7 +81,7 @@
 		display: block;
 		bottom: 0;
 		font-size: 26px;
-		color: #082337;
+		color: currentcolor;
 		line-height: 50px;
 		text-align: center;
 		overflow: hidden;
@@ -109,8 +110,8 @@
 		color: #ef5a18;
 	}
 	input:checked+label { 
-		background-color: currentcolor;
-		border: 3px solid currentcolor;
+		background-color: #ef5a18;
+		border: 3px solid #ef5a18;
 	}
 	input:checked+label::after {
 		position: absolute;

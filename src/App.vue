@@ -11,6 +11,7 @@ export default {
 		let mId = storage.get('phcstoken');
 		if(mId && mId != ''){
 			self.$store.dispatch('setUoid',mId);
+			self.$router.push({path:'/mresult'});
 		}
 	}
 }

@@ -23,6 +23,11 @@ export default new Router({
 		  component: () => import('@/views/Result.vue')
 		},
 		{
+		  path: '/mresult',
+		  name: 'mresult',
+		  component: () => import('@/views/MResult.vue')
+		},
+		{
 		  path: '/comp',
 		  name: 'Composite',
 		  component: () => import('@/views/Composite.vue')

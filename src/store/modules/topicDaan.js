@@ -32,8 +32,17 @@ const actions={
 	},
 	resCache({commit,state}){
 		let mRes = storage.get(state.mUoid);
+		mRes = null;
 		if(mRes && mRes != ''){
 			commit(types.RES_PAGE_OBJ,JSON.parse(mRes));
+		}else{
+			ser.mPost('topda.php',{action:'caxun',uoid:state.mUoid}).then((msg)=>{
+				//console.log(JSON.stringify(msg.cont))
+				if(msg.status == 'success'){
+					commit(types.RES_PAGE_OBJ,msg.cont);
+					storage.set(state.mUoid,JSON.stringify(msg.cont));
+				}
+			})
 		}
 	},
 	resImgd({commit,state}, param){

@@ -163,15 +163,15 @@ export default {
 			                stepSize: 20
 			            },
 						gridLines: {
-							color: '#dfdfdf',
+							color: '#000',
 							fontColor: "#000",
 						},
 						angleLines:{
 							display:true,//雷达辐射轴     
-							color: '#dfdfdf',
+							color: '#000',
 						},
 						pointLabels:{
-							fontColor:"#565f70",
+							fontColor:"#000",
 							fontSize:20//x轴文字
 						},
 					},

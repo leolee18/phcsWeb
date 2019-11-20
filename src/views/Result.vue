@@ -7,7 +7,7 @@
 	</div>
 	<result-text v-for="(slide, index) in mResObj && mResObj.daMS" :key="index" >{{slide}}</result-text>
 	<dividing-line v-if="mBooks.length > 0">推荐书单</dividing-line>
-	<recommended-book v-for="(slides, indexs) in mBooks" :key="indexs">
+	<recommended-book v-for="(slides, indexs) in mBooks" :key="indexs" :murl="slides.url">
 		<img slot="reci" :src="'http://v.51coach.com/wwlyweb/'+slides.img" class="rec-all-i" />
 		<div slot="rect">《{{slides.title}}》</div>
 		<div slot="recc">{{slides.cont}}</div>

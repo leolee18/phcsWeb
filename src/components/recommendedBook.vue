@@ -19,9 +19,15 @@
 
 <script>
 	export default {
+		props:{
+			'murl':{
+				type:String,
+				default:'',
+			}
+		},
 		methods: {
 			clickBook(e){
-				window.location.href = 'https://appgbvcnsc67552.h5.xiaoeknow.com/homepage';
+				window.location.href = this.murl;
 			}
 		}
 	}

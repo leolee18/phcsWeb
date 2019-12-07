@@ -4,17 +4,22 @@
   </div>
 </template>
 <script>
-import storage from '@/server/storage.js';
-export default {
-	mounted() {
-		let self = this;
-		let mId = storage.get('phcstoken');
-		if(mId && mId != ''){
-			self.$store.dispatch('setUoid',mId);
-			self.$router.push({path:'/mresult'});
+	import storage from '@/server/storage.js';
+	export default {
+		mounted() {
+			let self = this;
+			// storage.set("msdWebToken",'b86dff93ab0a22449c08a9d289ae136b');
+			var mToken = storage.get('msdWebToken');
+			if(mToken){
+				self.$store.dispatch('setUoid',mToken);
+				self.$store.dispatch('loginWXToken',mToken);
+				let mRes = storage.get(mToken);
+				if(mRes && mRes != ''){
+					self.$router.push({path:'/mresult'});
+				}
+			}
 		}
 	}
-}
 </script>
 <style>
 	body{

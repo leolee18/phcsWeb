@@ -7,6 +7,7 @@ function serAdd(addres){
 	var kc = 'interface/';
 	var returnStr = serUrl;
 	switch (addres){
+		case 'wxLogin.php'://登录
 		case 'topic.php'://页面题目数据集
 		case 'topda.php'://结果提交
 			returnStr = serInter+kc+addres;

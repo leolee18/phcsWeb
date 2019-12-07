@@ -6,6 +6,8 @@
 	    <canvas ref="myChart2" width="500px" height="500px"></canvas>
 	</div>
 	<result-text v-for="(slide, index) in mResObj && mResObj.daMS" :key="index" >{{slide}}</result-text>
+	<div @click="minvite" class="but-vc acto">保存测试结果</div>
+	<div @click="mreading" class="but-vl acto">再测试一次</div>
 	<dividing-line v-if="mBooks.length > 0">推荐书单</dividing-line>
 	<recommended-book v-for="(slides, indexs) in mBooks" :key="indexs" :murl="slides.url">
 		<img slot="reci" :src="'http://v.51coach.com/wwlyweb/'+slides.img" class="rec-all-i" />
@@ -13,8 +15,6 @@
 		<div slot="recc">{{slides.cont}}</div>
 		<div slot="recb"></div>
 	</recommended-book>
-	<div @click="mreading" class="but-vl acto">前往读书</div>
-	<div @click="minvite" class="but-vc acto">邀请好友参与测试</div>
   </div>
 </template>
 
@@ -44,41 +44,40 @@ export default {
 		])
 	},
 	watch: {
-	  mResObj: function (val){
-		if(val && val.daImg){
-			this.mBooks = this.getRandomArrayElements(val.daImg, 3);
-		}
-		if(val && val.tjImg){
-			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+val.tjImg;
-		}
-		this.mChArr = this.setChart(val.daan);
-		this.updateChart(this.ctx,this.mChArr);
-	  }
+	  	mResObj: function (val){
+		  	if(val)this.updateData(val);
+	  	}
 	},
 	mounted() {
-		if(this.mResObj && this.mResObj.daImg){
-			this.mBooks = this.getRandomArrayElements(this.mResObj.daImg, 3);
-		}
-		if(this.mResObj && this.mResObj.tjImg){
-			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+this.mResObj.tjImg;
-		}
 		this.ctx = this.$refs.myChart2.getContext('2d');
-		if(this.mResObj && this.mResObj.daan){
-			this.mChArr = this.setChart(this.mResObj.daan);
-			this.updateChart(this.ctx,this.mChArr);
-		}
-		if(!this.mResObj){
+		
+		if(this.mResObj){
+			this.updateData(this.mResObj);
+		}else{
 			this.$store.dispatch('resCache');
 		}
 	},
 	methods: {
+		updateData(mObj){
+			if(mObj){
+				if(mObj.daImg){
+					this.mBooks = this.getRandomArrayElements(mObj.daImg, 3);
+				}
+				if(mObj.tjImg){
+					this.mtsimg = 'http://v.51coach.com/wwlyweb/'+mObj.tjImg;
+				}
+				if(mObj.daan){
+					this.mChArr = this.setChart(mObj.daan);
+					this.updateChart(this.ctx,this.mChArr);
+				}
+			}
+		},
 		minvite(e){
 			this.$store.dispatch('resImgd',this.$refs.myChart2.toDataURL('image/png'));
 			this.$router.push({path:'/comp'});
 		},
 		mreading(e){
-			window.location.href = 'https://appgbvcnsc67552.h5.xiaoeknow.com/homepage';
-			//window.location.href = 'http://51coach.com/msdWeb/#/monox/9D41CF64-B93F-6302-B40C-3EBDE0DBAE7A';
+			this.$router.push({path:'/topic'});
 		},
 		getRandomArrayElements(arr, count){
 			let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;

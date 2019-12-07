@@ -3,16 +3,8 @@
 	<div class="com-ts">长按下方图片，『保存图片』或『发送给朋友』</div>
 	<img ref="myImg" src="" class="com-bc-img"/>
 	<div class="com-can">
-		<canvas ref="myChartI" width="630px" height="1036px"></canvas>
+		<canvas ref="myChartI" width="630px" height="1226px"></canvas>
 	</div>
-	<img :src="musimg" class="com-can-img"  @load="ULoaded" ref="mUimg" />
-	<img :src="mtsimg" class="com-can-img" @load="TLoaded" ref="mTimg" />
-	<img :src="mJGImg" class="com-can-img" @load="CSLoaded" ref="mCSimg" />
-	<img src="../assets/hct/user.png" class="com-can-img" @load="HctUserL" ref="mHctU" />
-	<img src="../assets/hct/zj_bs.png" class="com-can-img" @load="HctBsL" ref="mHctBs" />
-	<img src="../assets/hct/zj_kx.png" class="com-can-img" @load="HctKxL" ref="mHctKx" />
-	<img src="../assets/hct/fgx.png" class="com-can-img" @load="HctFxL" ref="mHctFx" />
-	<img src="../assets/hct/ewm.png" class="com-can-img" @load="ERLoaded" ref="mERimg" />
   </div>
 </template>
 
@@ -24,7 +16,12 @@ export default {
 			ctx:null,
 			mtsimg:require('@/assets/tjt_1.png'),
 			musimg:require('@/assets/log_lo.png'),
-			mdaMS:[]
+			loadHead:require('@/assets/hct/head.png'),
+			loadUser:require('@/assets/hct/user.png'),
+			loadBS:require('@/assets/hct/zj_bs.png'),
+			loadKX:require('@/assets/hct/zj_kx.png'),
+			loadFGX:require('@/assets/hct/fgx.png'),
+			loadEWM:require('@/assets/hct/ewm.png')
 		}
 	},
 	computed:{
@@ -35,107 +32,128 @@ export default {
 	},
 	watch: {
 	  mResObj: function (val){
-		if(val && val.tjImg){
-			this.mtsimg = 'http://51coach.com/wwlyweb/'+val.tjImg;
-		}
-		if(val && val.user){
-			this.musimg = 'http://51coach.com/wwlyweb/interface/'+val.user.headimgurl;
-		}
-		if(this.mResObj && this.mResObj.daMS){
-			this.mdaMS = this.mResObj.daMS;
-			this.canText();
-		}
+		this.updateData(val);
 	  }
 	},
 	mounted() {
 		let that = this;
-		that.mUimg = this.$refs.mUimg;
-		that.mTimg = this.$refs.mTimg;
-		that.mCSImg = this.$refs.mCSimg;
-		that.mERImg = this.$refs.mERimg;
-		
-		that.mHctU = this.$refs.mHctU;
-		that.mHctBs = this.$refs.mHctBs;
-		that.mHctKx = this.$refs.mHctKx;
-		that.mHctFx = this.$refs.mHctFx;
-		
 		that.ctx = that.$refs.myChartI.getContext('2d');
-		
-		if(this.mResObj && this.mResObj.tjImg){
-			this.mtsimg = 'http://51coach.com/wwlyweb/'+this.mResObj.tjImg;
-		}
-		if(this.mResObj && this.mResObj.user){
-			this.musimg = 'http://51coach.com/wwlyweb/interface/'+this.mResObj.user.headimgurl;
-		}
-		if(this.mResObj && this.mResObj.daMS){
-			this.mdaMS = this.mResObj.daMS;
-			this.canText();
-		}
-		this.updateImg();
+		this.updateData(this.mResObj);
 		
 		if(!this.mResObj){
 			this.$store.dispatch('resCache');
 		}
 	},
 	methods: {
-		ULoaded(e){
-			this.ctx.fillStyle="#ffffff";
-			this.ctx.fillRect(37,505,72,72);
-			this.ctx.drawImage(this.mUimg,37,505,72,72);
-			this.updateImg();
+		updateData(mObj){
+			if(mObj){
+				if(mObj.tjImg){
+					this.mtsimg = 'http://51coach.com/wwlyweb/'+mObj.tjImg;
+				}
+				if(mObj.user){
+					this.musimg = 'http://51coach.com/wwlyweb/interface/'+mObj.user.headimgurl;
+				}
+				this.canText(mObj);
+				this.canImgLoad();
+			}
 		},
-		TLoaded(e){
-			this.ctx.drawImage(this.mTimg,28,28);
-			this.updateImg();
-		},
-		CSLoaded(e){
-			this.ctx.drawImage(this.mCSImg,360,500,240,240);
-			this.updateImg();
-		},
-		ERLoaded(e){
-			this.ctx.drawImage(this.mERImg,430,780);
-			this.updateImg();
-		},
-		HctUserL(e){
-			this.ctx.drawImage(this.mHctU,32,500);
-			this.updateImg();
-		},
-		HctBsL(e){
-			this.ctx.drawImage(this.mHctKx,32,700);
-			this.updateImg();
-		},
-		HctKxL(e){
-			this.ctx.drawImage(this.mHctBs,32,855);
-			this.updateImg();
-		},
-		HctFxL(e){
-			this.ctx.drawImage(this.mHctFx,32,998);
-			this.updateImg();
-		},
-		canText(){
+		canText(mObj){
 			let that = this;
 			
-			that.ctx.fillStyle = that.bgColor(that.mResObj.tjImg);
-			that.ctx.fillRect(0,0,630,1036);
+			that.ctx.fillStyle = that.bgColor(mObj.tjImg);
+			that.ctx.fillRect(0,0,630,1226);
 			that.ctx.font="28px Arial";
 			that.ctx.fillStyle="#000000";
-			that.ctx.fillText("扫 描 二 维 码",430,990);
+			that.ctx.fillText("扫 描 二 维 码",430,1170);
 			that.ctx.font="22px Arial";
-			that.ctx.fillText("测测你的平衡状态",430,1020);
+			that.ctx.fillText("测测你的人生是否平衡",385,1200);
 			
+			let mName = mObj.user?mObj.user.nickname:'';
 			that.ctx.fillStyle="#000000";
 			that.ctx.font="33px Arial";
-			that.ctx.fillText('我的',167,550);
-			that.ctx.fillText('平衡状态',167,600);
+			that.ctx.fillText(mName+' 的',167,730);
+			that.ctx.fillText('平衡状态',167,780);
 			
 			that.ctx.font="22px Arial";
 			that.ctx.fillStyle="#1f313e";
-			if(that.mdaMS.length >0){
-				that.drawText(that.ctx,that.mdaMS[0],95,715,300,32);
+			if(mObj.daMS.length >0){
+				that.drawText(that.ctx,mObj.daMS[0],95,895,300,32);
 			}
-			if(that.mdaMS.length >1){
-				that.drawText(that.ctx,that.mdaMS[1],88,870,300,32);
+			if(mObj.daMS.length >1){
+				that.drawText(that.ctx,mObj.daMS[1],88,1060,300,32);
 			}
+
+			that.updateImg();
+		},
+		canImgLoad(){
+			let that = this;
+			
+			//本地图片
+			let loadHead = new Image();//用户底图
+			loadHead.src = that.loadHead;
+			loadHead.onload = ()=> {
+				that.ctx.drawImage(loadHead,32,40);
+				that.updateImg();
+			}; 
+
+			let loadUser = new Image();//用户底图
+			loadUser.src = that.loadUser;
+			loadUser.onload = ()=> {
+				that.ctx.drawImage(loadUser,32,680);
+				that.updateImg();
+			}; 
+			
+			let loadBS = new Image();//底分前图标
+			loadBS.src = that.loadBS;
+			loadBS.onload = ()=> {
+				that.ctx.drawImage(loadBS,32,880);
+				that.updateImg();
+			}; 
+
+			let loadKX = new Image();//高分前图标
+			loadKX.src = that.loadKX;
+			loadKX.onload = ()=> {
+				that.ctx.drawImage(loadKX,32,1035);
+				that.updateImg();
+			}; 
+			
+			let loadFGX = new Image();//最底线图标
+			loadFGX.src = that.loadFGX;
+			loadFGX.onload = ()=> {
+				that.ctx.drawImage(loadFGX,32,1178);
+				that.updateImg();
+			}; 
+
+			let loadEWM = new Image();//二维码图标
+			loadEWM.src = that.loadEWM;
+			loadEWM.onload = ()=> {
+				that.ctx.drawImage(loadEWM,430,960);
+				that.updateImg();
+			}; 
+
+			let mJGImg = new Image();//数据图
+			mJGImg.src = that.mJGImg;
+			mJGImg.onload = ()=> {
+				that.ctx.drawImage(mJGImg,360,680,240,240);
+				that.updateImg();
+			}; 
+
+			//远程图片
+			let musimg = new Image();//用户头像
+			musimg.src = that.musimg;
+			musimg.onload = ()=> {
+				that.ctx.fillStyle="#ffffff";
+				that.ctx.fillRect(37,685,72,72);
+				that.ctx.drawImage(musimg,37,685,72,72);
+				that.updateImg();
+			}; 
+
+			let mtsimg = new Image();//结果图
+			mtsimg.src = that.mtsimg;
+			mtsimg.onload = ()=> {
+				that.ctx.drawImage(mtsimg,26,208);
+				that.updateImg();
+			}; 
 		},
 		drawText(ctx, text, x, y, maxWidth, lineHeight) {
 			let canvas = ctx.canvas;
@@ -194,7 +212,7 @@ export default {
 </script>
 <style scoped>
 	.container{
-		position:absolute;
+		position: relative;
 		width: 750px;
 		min-height: 100%;
 		color: #565f70;

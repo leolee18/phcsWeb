@@ -24,20 +24,20 @@ import storage from '@/server/storage.js';
 export default {
 	mounted() {
 		let self = this;
-		let mId = self.$route.params.id;
-		if(mId && mId != ''){
-			storage.set('phcstoken',mId);
-			self.$store.dispatch('setUoid',mId);
-		}else{
-			let mStr32 = storage.get('phcstoken');
-			if(mStr32 && mStr32 != ''){
-				self.$store.dispatch('setUoid',mStr32);
-			}else{
-				mStr32 = self.randomString();
-				storage.set('phcstoken',mStr32);
-				self.$store.dispatch('setUoid',mStr32);
-			}
-		}
+		// let mId = self.$route.params.id;
+		// if(mId && mId != ''){
+		// 	storage.set('phcstoken',mId);
+		// 	self.$store.dispatch('setUoid',mId);
+		// }else{
+		// 	let mStr32 = storage.get('phcstoken');
+		// 	if(mStr32 && mStr32 != ''){
+		// 		self.$store.dispatch('setUoid',mStr32);
+		// 	}else{
+		// 		mStr32 = self.randomString();
+		// 		storage.set('phcstoken',mStr32);
+		// 		self.$store.dispatch('setUoid',mStr32);
+		// 	}
+		// }
 	},
 	methods: {
 		mstart(e){

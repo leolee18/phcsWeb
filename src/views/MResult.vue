@@ -6,8 +6,8 @@
 	    <canvas ref="myChart2" width="500px" height="500px"></canvas>
 	</div>
 	<result-text v-for="(slide, index) in mResObj && mResObj.daMS" :key="index" >{{slide}}</result-text>
+	<div @click="minvite" class="but-vc acto">保存测试结果</div>
 	<div @click="mreading" class="but-vl acto">再测试一次</div>
-	<div @click="minvite" class="but-vc acto">邀请好友参与测试</div>
   </div>
 </template>
 
@@ -35,27 +35,28 @@ export default {
 	},
 	watch: {
 	  mResObj: function (val){
-		if(val && val.tjImg){
-			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+val.tjImg;
-		}
-		this.mChArr = this.setChart(val.daan);
-		this.updateChart(this.ctx,this.mChArr);
+		this.updateData(val);
 	  }
 	},
 	mounted() {
-		if(this.mResObj && this.mResObj.tjImg){
-			this.mtsimg = 'http://v.51coach.com/wwlyweb/'+this.mResObj.tjImg;
-		}
 		this.ctx = this.$refs.myChart2.getContext('2d');
-		if(this.mResObj && this.mResObj.daan){
-			this.mChArr = this.setChart(this.mResObj.daan);
-			this.updateChart(this.ctx,this.mChArr);
-		}
+		this.updateData(this.mResObj);
 		if(!this.mResObj){
 			this.$store.dispatch('resCache');
 		}
 	},
 	methods: {
+		updateData(mObj){
+			if(mObj){
+				if(mObj.tjImg){
+					this.mtsimg = 'http://v.51coach.com/wwlyweb/'+this.mResObj.tjImg;
+				}
+				if(mObj.daan){
+					this.mChArr = this.setChart(mObj.daan);
+					this.updateChart(this.ctx,this.mChArr);
+				}
+			}
+		},
 		minvite(e){
 			this.$store.dispatch('resImgd',this.$refs.myChart2.toDataURL('image/png'));
 			this.$router.push({path:'/comp'});

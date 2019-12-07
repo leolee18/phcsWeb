@@ -4,38 +4,47 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',  //history   hash
-  base: process.env.BASE_URL,
-  routes: [
+	mode: 'hash',  //history   hash
+	base: process.env.BASE_URL,
+	routes: [
 		{
-		  path: '/index/:id?',
-		  name: 'index',
-		  component: () => import('@/views/Index.vue')
+			path: '/',
+			redirect: '/index'
 		},
 		{
-		  path: '/topic',
-		  name: 'topic',
-		  component: () => import('@/views/Topic.vue')
+			path: '/index',
+			name: 'index',
+			component: () => import('@/views/Index.vue')
 		},
 		{
-		  path: '/result',
-		  name: 'result',
-		  component: () => import('@/views/Result.vue')
+			path: '/topic',
+			name: 'topic',
+			component: () => import('@/views/Topic.vue')
 		},
 		{
-		  path: '/mresult',
-		  name: 'mresult',
-		  component: () => import('@/views/MResult.vue')
+			path: '/result',
+			name: 'result',
+			component: () => import('@/views/Result.vue')
 		},
 		{
-		  path: '/comp',
-		  name: 'Composite',
-		  component: () => import('@/views/Composite.vue')
+			path: '/mresult',
+			name: 'mresult',
+			component: () => import('@/views/MResult.vue')
 		},
-    {
-      path: '/home',
-      name: 'home',
-      component: () => import('@/views/Home.vue')
-    }
-  ]
+		{
+			path: '/comp',
+			name: 'Composite',
+			component: () => import('@/views/Composite.vue')
+		},
+		{
+			path: '/author',
+			name: 'author',
+			component: resolve => require(['@/views/Author'], resolve)
+		},
+		{
+			path: '/home',
+			name: 'home',
+			component: () => import('@/views/Home.vue')
+		}
+	]
 })

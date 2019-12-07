@@ -18,7 +18,6 @@ const getters={
 const actions={
 	topLoad({commit,state}, param){
 		ser.mPost('topic.php',{action:'top'}).then((msg)=>{
-			//console.log(JSON.stringify(msg.cont))
 			if(msg.status == 'success'){
 				commit(types.TOP_PAGE_LIST,msg.cont.list);
 			}

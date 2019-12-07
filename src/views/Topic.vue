@@ -51,15 +51,10 @@ export default {
 		mtopic(e){
 			if(this.pron >= 100){
 				this.$router.push({path:'/result'});
-				if(this.mUoid && this.mUoid != ''){
-					this.$store.dispatch('resLoad',{uoid:this.mUoid,daan:JSON.stringify(this.mResList)});
+				if(this.mUoid){
+					this.$store.dispatch('resLoad',{daan:JSON.stringify(this.mResList)});
 				}
 			}
-			/* this.$router.push({path:'/result'});
-			if(this.mUoid && this.mUoid != ''){
-				this.$store.dispatch('resLoad',{uoid:this.mUoid,daan:JSON.stringify(this.mResList)});
-			} */
-			//'b86dff93ab0a22449c08a9d289ae136b'
 		},
 		onRadclick(rv,mt){
 			this.$store.dispatch('setTopRes',{rv,mt});

@@ -18,6 +18,10 @@
 					self.$router.push({path:'/mresult'});
 				}
 			}
+
+			self.$store.dispatch('wxInit');
+			var jsWXUrl = window.location.href.split('#')[0];
+			self.$store.dispatch('loadWXConfig',{url:jsWXUrl});
 		}
 	}
 </script>

@@ -9,6 +9,7 @@ const actions={}
 const mutations={}
 
 import loginwx from './modules/loginwx'
+import wxApi from './modules/wxApi'
 import topicDaan from './modules/topicDaan'
 import topicList from './modules/topicList'
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
   actions,
 	modules:{
 		loginwx,
+		wxApi,
 		topicDaan,
 		topicList
 	}

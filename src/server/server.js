@@ -12,6 +12,9 @@ function serAdd(addres){
 		case 'topda.php'://结果提交
 			returnStr = serInter+kc+addres;
 			break;
+		case 'sample.php'://分享参数
+			returnStr = 'http://51coach.com/msdweb/server/'+addres;
+			break;	
 		case 'local':
 			returnStr = serUrl;
 			break;	

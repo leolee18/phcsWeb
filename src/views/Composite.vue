@@ -3,7 +3,7 @@
 	<div class="com-ts">长按下方图片，『保存图片』或『发送给朋友』</div>
 	<img ref="myImg" src="" class="com-bc-img"/>
 	<div class="com-can">
-		<canvas ref="myChartI" width="630px" height="1226px"></canvas>
+		<canvas ref="myChartI" width="630px" height="1240px"></canvas>
 	</div>
   </div>
 </template>
@@ -61,12 +61,12 @@ export default {
 			let that = this;
 			
 			that.ctx.fillStyle = that.bgColor(mObj.tjImg);
-			that.ctx.fillRect(0,0,630,1226);
+			that.ctx.fillRect(0,0,630,1240);
 			that.ctx.font="28px Arial";
 			that.ctx.fillStyle="#000000";
-			that.ctx.fillText("扫 描 二 维 码",430,1170);
+			that.ctx.fillText("扫 描 二 维 码",430,1190);
 			that.ctx.font="22px Arial";
-			that.ctx.fillText("测测你的人生是否平衡",385,1200);
+			that.ctx.fillText("测测你的人生是否平衡",385,1220);
 			
 			let mName = mObj.user?mObj.user.nickname:'';
 			that.ctx.fillStyle="#000000";
@@ -106,28 +106,28 @@ export default {
 			let loadBS = new Image();//底分前图标
 			loadBS.src = that.loadBS;
 			loadBS.onload = ()=> {
-				that.ctx.drawImage(loadBS,32,880);
+				that.ctx.drawImage(loadBS,32,1035);
 				that.updateImg();
 			}; 
 
 			let loadKX = new Image();//高分前图标
 			loadKX.src = that.loadKX;
 			loadKX.onload = ()=> {
-				that.ctx.drawImage(loadKX,32,1035);
+				that.ctx.drawImage(loadKX,32,875);
 				that.updateImg();
 			}; 
 			
 			let loadFGX = new Image();//最底线图标
 			loadFGX.src = that.loadFGX;
 			loadFGX.onload = ()=> {
-				that.ctx.drawImage(loadFGX,32,1178);
+				that.ctx.drawImage(loadFGX,32,1198);
 				that.updateImg();
 			}; 
 
 			let loadEWM = new Image();//二维码图标
 			loadEWM.src = that.loadEWM;
 			loadEWM.onload = ()=> {
-				that.ctx.drawImage(loadEWM,430,960);
+				that.ctx.drawImage(loadEWM,430,980);
 				that.updateImg();
 			}; 
 
@@ -221,7 +221,7 @@ export default {
 	.com-can{
 		position: absolute;
 		width: 750px;
-		height: 1230px;
+		height: 1240px;
 		top:0;
 		left: 750px;
 	}

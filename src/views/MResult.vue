@@ -8,6 +8,13 @@
 	<result-text v-for="(slide, index) in mResObj && mResObj.daMS" :key="index" >{{slide}}</result-text>
 	<div @click="minvite" class="but-vc acto">保存测试结果</div>
 	<div @click="mreading" class="but-vl acto">再测试一次</div>
+	<dividing-line v-if="mBooks.length > 0">推荐书单</dividing-line>
+	<recommended-book v-for="(slides, indexs) in mBooks" :key="indexs" :murl="slides.url">
+		<img slot="reci" :src="'http://v.51coach.com/wwlyweb/'+slides.img" class="rec-all-i" />
+		<div slot="rect">《{{slides.title}}》</div>
+		<div slot="recc">{{slides.cont}}</div>
+		<div slot="recb"></div>
+	</recommended-book>
   </div>
 </template>
 
@@ -15,10 +22,12 @@
 import {mapGetters} from 'vuex';
 import dividingLine from '@/components/dividingLine.vue';
 import resultText from '@/components/resultText.vue';
+import recommendedBook from '@/components/recommendedBook.vue';
 import Chart from 'chart.js';
 export default {
 	data () {
 		return {
+			mBooks:[],
 			ctx:null,
 			mChArr:[0, 0, 0, 0, 0, 0,0, 0],
 			mtsimg:''
@@ -26,7 +35,8 @@ export default {
 	},
 	components: {
 	  dividingLine,
-	  resultText
+	  resultText,
+	  recommendedBook
 	},
 	computed:{
 		...mapGetters([
@@ -48,6 +58,9 @@ export default {
 	methods: {
 		updateData(mObj){
 			if(mObj){
+				if(mObj.daImg){
+					this.mBooks = this.getRandomArrayElements(mObj.daImg, 3);
+				}
 				if(mObj.tjImg){
 					this.mtsimg = 'http://v.51coach.com/wwlyweb/'+this.mResObj.tjImg;
 				}
@@ -63,6 +76,19 @@ export default {
 		},
 		mreading(e){
 			this.$router.push({path:'/topic'});
+		},
+		getRandomArrayElements(arr, count){
+			let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+			if(min <=0){
+				return shuffled;
+			}
+			while (i-- > min) {
+			    index = Math.floor((i + 1) * Math.random());
+			    temp = shuffled[index];
+			    shuffled[index] = shuffled[i];
+			    shuffled[i] = temp;
+			}
+			return shuffled.slice(min);
 		},
 		setChart(mDaan){
 			let mArr = this.mChArr;
@@ -143,7 +169,7 @@ export default {
 						},
 						pointLabels:{
 							fontColor:"#000",
-							fontSize:20//x轴文字
+							fontSize:32//x轴文字
 						},
 					},
 					tooltips: {

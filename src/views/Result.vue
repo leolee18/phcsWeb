@@ -171,7 +171,7 @@ export default {
 						},
 						pointLabels:{
 							fontColor:"#000",
-							fontSize:20//x轴文字
+							fontSize:26//x轴文字
 						},
 					},
 					tooltips: {

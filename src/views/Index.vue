@@ -2,8 +2,8 @@
   <div class="container">
 	<div class="ind-all">
 		<img src="@/assets/cp_ct.png" class="ind-ct-img" />
-		<div class="ind-text">本测试是通过自己工作、生活中的一些情况，觉察到平时忽略的部分，找出希望有所改变或强化的内容，然后通过相应的书籍学习以及提升。</div>
-		<div class="ind-text">测试共24道题，为了保证测试效果，请遵守以下规则：</div>
+		<div class="ind-text">人生平衡状态测试，可以帮助你基于工作、生活中的具体情况，做人生8维度的梳理，视觉化呈现有待改变和强化的方向，让你的努力事半功倍。</div>
+		<div class="ind-text">温馨提示：测试结果和你最近的状态有关，建议每周一测，让你的成长更有方向。测试共24道题目，为了保证测试结果，请遵守以下规则：</div>
 		<div class="ind-xz">
 			<div class="ind-xz-one">
 				<img src="@/assets/ind_sj.png" class="ind-xz-one-img"/>

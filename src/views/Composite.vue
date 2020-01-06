@@ -3,7 +3,7 @@
 	<div class="com-ts">长按下方图片，『保存图片』或『发送给朋友』</div>
 	<img ref="myImg" src="" class="com-bc-img"/>
 	<div class="com-can">
-		<canvas ref="myChartI" width="630px" height="1240px"></canvas>
+		<canvas ref="myChartI" width="630px" height="1340px"></canvas>
 	</div>
   </div>
 </template>
@@ -61,12 +61,12 @@ export default {
 			let that = this;
 			
 			that.ctx.fillStyle = that.bgColor(mObj.tjImg);
-			that.ctx.fillRect(0,0,630,1240);
+			that.ctx.fillRect(0,0,630,1340);
 			that.ctx.font="28px Arial";
 			that.ctx.fillStyle="#000000";
-			that.ctx.fillText("扫 描 二 维 码",430,1190);
-			that.ctx.font="22px Arial";
-			that.ctx.fillText("测测你的人生是否平衡",385,1220);
+			that.ctx.fillText("扫 码 测 一 测",430,1320);
+			// that.ctx.font="22px Arial";
+			// that.ctx.fillText("测测你的人生是否平衡",385,1320);
 			
 			let mName = mObj.user?mObj.user.nickname:'';
 			that.ctx.fillStyle="#000000";
@@ -80,7 +80,7 @@ export default {
 				that.drawText(that.ctx,mObj.daMS[0],95,895,300,32);
 			}
 			if(mObj.daMS.length >1){
-				that.drawText(that.ctx,mObj.daMS[1],88,1060,300,32);
+				that.drawText(that.ctx,mObj.daMS[1],88,1110,300,32);
 			}
 
 			that.updateImg();
@@ -106,7 +106,7 @@ export default {
 			let loadBS = new Image();//底分前图标
 			loadBS.src = that.loadBS;
 			loadBS.onload = ()=> {
-				that.ctx.drawImage(loadBS,32,1035);
+				that.ctx.drawImage(loadBS,32,1085);
 				that.updateImg();
 			}; 
 
@@ -120,21 +120,21 @@ export default {
 			let loadFGX = new Image();//最底线图标
 			loadFGX.src = that.loadFGX;
 			loadFGX.onload = ()=> {
-				that.ctx.drawImage(loadFGX,32,1198);
+				that.ctx.drawImage(loadFGX,32,1298);
 				that.updateImg();
 			}; 
 
 			let loadEWM = new Image();//二维码图标
 			loadEWM.src = that.loadEWM;
 			loadEWM.onload = ()=> {
-				that.ctx.drawImage(loadEWM,430,980);
+				that.ctx.drawImage(loadEWM,430,1100);
 				that.updateImg();
 			}; 
 
 			let mJGImg = new Image();//数据图
 			mJGImg.src = that.mJGImg;
 			mJGImg.onload = ()=> {
-				that.ctx.drawImage(mJGImg,360,680,240,240);
+				that.ctx.drawImage(mJGImg,360,660,260,260);
 				that.updateImg();
 			}; 
 

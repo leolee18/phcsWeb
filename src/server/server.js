@@ -2,7 +2,7 @@ const axios = require('axios');
 
 function serAdd(addres){
 	var serUrl = 'http://'+window.location.host+'/';
-	var serInter = 'http://51coach.com/wwlyweb/';
+	var serInter = 'http://51coach.com/msdweb/';
 	
 	var kc = 'interface/';
 	var returnStr = serUrl;
@@ -13,7 +13,7 @@ function serAdd(addres){
 			returnStr = serInter+kc+addres;
 			break;
 		case 'sample.php'://分享参数
-			returnStr = 'http://51coach.com/msdweb/server/'+addres;
+			returnStr = serInter+'server/'+addres;
 			break;	
 		case 'local':
 			returnStr = serUrl;

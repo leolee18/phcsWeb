@@ -17,7 +17,7 @@
 				var code = self.GetUrlParame('code');
 				if (!code) {
 					var domine = window.location.href.split('#')[0];
-					window.location="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd504aa4c3a7d7fe3&redirect_uri="+domine+"&response_type=code&scope=snsapi_userinfo&state=abc";
+					window.location="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3ac5319b3ecd0971&redirect_uri="+domine+"&response_type=code&scope=snsapi_userinfo&state=abc";
 				} else {
 					var sendObj = {
 						code:code,

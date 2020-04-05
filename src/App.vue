@@ -8,8 +8,8 @@
 	export default {
 		mounted() {
 			let self = this;
-			// storage.set("msdWebToken",'b86dff93ab0a22449c08a9d289ae136b');
-			var mToken = storage.get('msdWebToken');
+			// storage.set("msdmeansLoginToken",'b86dff93ab0a22449c08a9d289ae136b');
+			var mToken = storage.get('msdmeansLoginToken');
 			if(mToken){
 				self.$store.dispatch('setUoid',mToken);
 				self.$store.dispatch('loginWXToken',mToken);

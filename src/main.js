@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
   if(store)store.dispatch('wxSetShare',{link:to.path});
-  var mToken = storage.get('msdWebToken'); 
+  var mToken = storage.get('msdmeansLoginToken'); 
   if (!mToken) {
     if (to.path === '/author') {
       next();

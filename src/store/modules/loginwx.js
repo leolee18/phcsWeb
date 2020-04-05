@@ -21,7 +21,7 @@ const actions={
 		ser.loadDataFun('wxLogin.php',{code:param.code},function(msg){
 			if(msg.status == 'success'){
 				if(msg.cont.add){
-					storage.set("msdWebToken",msg.cont.token);
+					storage.set("msdmeansLoginToken",msg.cont.token);
 					dispatch('setUoid',msg.cont.token);
 				}
 				commit(types.WEIXIN_LOGIN,msg.cont);

@@ -51,7 +51,7 @@ export default {
 					this.mtsimg = 'http://51coach.com/wwlyweb/'+mObj.tjImg;
 				}
 				if(mObj.user){
-					this.musimg = 'http://51coach.com/wwlyweb/interface/'+mObj.user.headimgurl;
+					this.musimg = 'http://51coach.com/msdweb/interface/'+mObj.user.headimgurl;
 				}
 				this.canText(mObj);
 				this.canImgLoad();

@@ -77,10 +77,10 @@ const actions={
 		});
 	},
 	loadWXConfig({commit,state,dispatch},param){
-		ser.loadDataFun('sample.php',{url:param.url},function(msg){
-			if(msg.hasOwnProperty("appId")){
+		ser.loadGetFun('wechat/jssdk',{url:param.url}).then((res)=>{
+			if(res.hasOwnProperty("appId")){
 				if(state.wxIs){
-					dispatch('wxSetConf',msg);
+					dispatch('wxSetConf',res);
 				}
 			}else{
 				console.log('WXConfig error');
@@ -92,7 +92,7 @@ const actions={
 			debug: false,
 			appId: param.appId,
 			timestamp: parseInt(param.timestamp),
-			nonceStr: param.nonceStr,
+			nonceStr: param.nonStr,
 			signature: param.signature,
 			jsApiList: [
 				'checkJsApi',

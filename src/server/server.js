@@ -14,7 +14,10 @@ function serAdd(addres){
 			break;
 		case 'sample.php'://分享参数
 			returnStr = serInter+'server/'+addres;
-			break;	
+			break;
+		case 'wechat/jssdk'://分享外部
+			returnStr = 'http://wx.51coach.com/api/'+addres;
+			break;			
 		case 'local':
 			returnStr = serUrl;
 			break;	
@@ -40,6 +43,19 @@ function loadDataFun(urlStr,mObj,sucFun,errFun){
 				alert("网络出现故障，请重试");
 			}
   });
+}
+function loadGetFun(urlStr,mObj){
+	return new Promise((resolve, reject) => {
+		axios.get(serAdd(urlStr), {
+			params: mObj
+		})
+		.then(response => {
+			resolve(response.data);
+		})
+		.catch(err => {
+			reject(err);
+		})
+	});
 }
 function mPost(urlStr,mObj){
 	var form_data = new FormData();
@@ -72,5 +88,6 @@ module.exports = {
 	serAdd:serAdd,
 	mPost:mPost,
 	loadDataFun:loadDataFun,
+	loadGetFun:loadGetFun,
 	serUrl:serUrl
 }

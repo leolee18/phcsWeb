@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { reject } = require('core-js/fn/promise');
 
 function serAdd(addres){
 	var serUrl = 'http://'+window.location.host+'/';
@@ -45,17 +46,7 @@ function loadDataFun(urlStr,mObj,sucFun,errFun){
   });
 }
 function loadGetFun(urlStr,mObj){
-	return new Promise((resolve, reject) => {
-		axios.get(serAdd(urlStr), {
-			params: mObj
-		})
-		.then(response => {
-			resolve(response.data);
-		})
-		.catch(err => {
-			reject(err);
-		})
-	});
+	return axios.get(serAdd(urlStr),{params: mObj});
 }
 function mPost(urlStr,mObj){
 	var form_data = new FormData();

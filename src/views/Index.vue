@@ -14,6 +14,7 @@
 				<div class="ind-xz-one-text">诚实回答（即使你不喜欢这个答案）</div>
 			</div>
 		</div>
+		<goback-home></goback-home>
 		<div @click="mstart" class="but-vc acto">开始测试</div>
 	</div>
   </div>
@@ -21,7 +22,11 @@
 
 <script>
 import storage from '@/server/storage.js';
+import GobackHome from '@/components/GobackHome';
 export default {
+	components:{
+		GobackHome
+	},
 	mounted() {
 		let self = this;
 		// let mId = self.$route.params.id;
